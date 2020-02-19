@@ -1,0 +1,52 @@
+version: "3.1"
+# The server profiles used in this example are intended for use with edge versions of the product image only.
+
+services:
+  pingdirectory:
+    image: pingidentity/pingdirectory:${PING_IDENTITY_DEVOPS_TAG}
+    environment:
+      - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
+      - SERVER_PROFILE_PATH=simple-sync/pingdirectory
+      - PING_IDENTITY_ACCEPT_EULA=YES
+    env_file:
+      # Configuration file created when setup.sh (Getting-started project root directory) is first run to source
+      # devops user/key details for evaluation licenses and for docker image/git tags
+      - ~/.pingidentity/devops
+    # Example: Examples below for mounting local directories for inbound server profile and persisting
+    #          server build.  The local /opt/out directory must be empty when building new server
+    #             /opt/out - Resulting server build
+    #             /opt/in  - Inbound server-profile detail in liue of SERVER_PROFILE_URL (must be commented out)
+    #volumes:
+    #   - ${HOME}/projects/devops/volumes/simple-sync.pingdirectory:/opt/out
+    #   - ${HOME}/projects/devops/pingidentity-server-profiles/baseline/pingdirectory:/opt/in
+    ports:
+      - 1636:636
+      - 1443:443
+    networks:
+      - pingnet
+
+  pingdatasync:
+    image: pingidentity/pingdatasync:${PING_IDENTITY_DEVOPS_TAG}
+    environment:
+      - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
+      - SERVER_PROFILE_PATH=simple-sync/pingdatasync
+      - PING_IDENTITY_ACCEPT_EULA=YES
+    env_file:
+      - ~/.pingidentity/devops
+    #volumes:
+    #   - ${HOME}/projects/devops/volumes/simple-sync.pingdatasync:/opt/out
+    ports:
+      - 2636:636
+      - 2443:443
+    networks:
+      - pingnet
+  
+  pingdataconsole:
+    image: pingidentity/pingdataconsole:${PING_IDENTITY_DEVOPS_TAG}
+    ports:
+      - 8443:8443
+    networks: 
+      - pingnet  
+              
+networks:
+    pingnet:

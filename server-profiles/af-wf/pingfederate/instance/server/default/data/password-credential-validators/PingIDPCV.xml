@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:PluginConfiguration isInheritExtendedContractAttributes="false" name="PingIDPCV" xmlns:urn="urn:sourceid.org:saml2:adapter:conf">
+    <urn:Fields>
+        <urn:Field name="CHECK GROUPS">false</urn:Field>
+        <urn:Field name="CHECK BYPASS GROUPS">false</urn:Field>
+        <urn:Field name="IF THE USER IS NOT ACTIVATED ON PINGID">register</urn:Field>
+        <urn:Field name="FAIL Login if the user is not member of the ldap group">true</urn:Field>
+        <urn:Field name="RADIUS Server Authentication Port">1812</urn:Field>
+        <urn:Field name="Domain postfix"/>
+        <urn:Field name="PingID Properties File">#Auto-Generated from PingOne, downloaded by id=[1074571] email=[greggdiamant+afwf@pingidentity.com]
+#Wed Feb 19 08:26:46 MST 2020
+use_base64_key=jEFsgXz+/7xNeQQqaj0gPn1+yZXAmKp0CDz5i42LDYg=
+use_signature=true
+token=187d543567c24eecaef6307f8882e0de
+idp_url=https://idpxnyl3m.pingidentity.com/pingid
+org_alias=8aac0b68-513a-4bb3-8e5c-61f084c4c3a4
+admin_url=https://idpxnyl3m.pingidentity.com/pingid
+authenticator_url=https://authenticator.pingone.com/pingid/ppm</urn:Field>
+        <urn:Field name="Authentication During Errors">Bypass User</urn:Field>
+        <urn:Field name="Users Without a Paired Device">Bypass User</urn:Field>
+        <urn:Field name="LDAP Data source"/>
+        <urn:Field name="Create Entry For Devices">false</urn:Field>
+        <urn:Field name="Encryption Key For Devices"/>
+        <urn:Field name="Search Base"/>
+        <urn:Field name="Search Filter"/>
+        <urn:Field name="Scope of Search"/>
+        <urn:Field name="Distinguished Name Pattern"/>
+        <urn:Field name="State Attribute"/>
+        <urn:Field name="Server Threads"/>
+        <urn:Field name="Enable RADIUS Server">true</urn:Field>
+        <urn:Field name="Default Shared Secret"/>
+        <urn:Field name="PingID service ID">vpn</urn:Field>
+        <urn:Field name="State Encryption Key">eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiRW1JY1UxOVdueSIsInZlcnNpb24iOiIxMC4wLjAuMTUifQ..i1Ir9gFgnPQxcKGpuKZ_6Q.1r9GQKl0YxE44GOh0yBfjRRB9MxE0mS8iJcSZ1pZveDLo7PAn0vyb4bQUJ8tHVmn.ekK2JkSPyeCyhP4wqcxciA</urn:Field>
+        <urn:Field name="State Lifetime">300</urn:Field>
+        <urn:Field name="RADIUS client doesn't support challenge">false</urn:Field>
+        <urn:Field name="OTP in password separator">Comma</urn:Field>
+        <urn:Field name="RADIUS client password validation">false</urn:Field>
+        <urn:Field name="PingID username attribute"/>
+        <urn:Field name="PingId Heartbeat Timeout">30</urn:Field>
+        <urn:Field name="Newline Character">None</urn:Field>
+    </urn:Fields>
+    <urn:AdvancedFields>
+        <urn:Field name="Server Threads"/>
+        <urn:Field name="Enable RADIUS Server">true</urn:Field>
+        <urn:Field name="Default Shared Secret"/>
+        <urn:Field name="PingID service ID">vpn</urn:Field>
+        <urn:Field name="State Encryption Key">eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiRW1JY1UxOVdueSIsInZlcnNpb24iOiIxMC4wLjAuMTUifQ..7v85GSadiiALuEzbP9N1eg._7dgSer75wswaQ148XCFTCEiq3R579x8J9dA8Hhr88XHWD0MAxT1u889wZiwTKiP.T0HTqauz0rPeAp6vZ9tVzA</urn:Field>
+        <urn:Field name="State Lifetime">300</urn:Field>
+        <urn:Field name="RADIUS client doesn't support challenge">false</urn:Field>
+        <urn:Field name="OTP in password separator">Comma</urn:Field>
+        <urn:Field name="RADIUS client password validation">false</urn:Field>
+        <urn:Field name="PingID username attribute"/>
+        <urn:Field name="PingId Heartbeat Timeout">30</urn:Field>
+        <urn:Field name="Newline Character">None</urn:Field>
+    </urn:AdvancedFields>
+    <urn:Tables>
+        <urn:Table name="RADIUS Clients"/>
+        <urn:Table name="Delegate PCV's"/>
+        <urn:Table name="Member Of Groups"/>
+        <urn:Table name="Bypass Member Of Groups"/>
+        <urn:Table name="Multiple attributes mapping rules"/>
+        <urn:Table name="User specific groups to Radius Client"/>
+    </urn:Tables>
+    <urn:ExtendedContractAttributes/>
+</urn:PluginConfiguration>

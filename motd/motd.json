@@ -1,0 +1,69 @@
+
+{
+    "example" : [
+        {
+            "validFrom": 20190101,
+            "validTo": 20191231,
+            "subject": "Example Subject",
+            "message": ["Example Message Line # 1",
+                        "Example Message Line # 2"]
+        }
+    ],
+    "devops" : [
+        {
+            "validFrom": 20190803,
+            "validTo": 20190826,
+            "subject": "DEVOPS-USER and DEVOPS-KEY Required after Aug 19th, 2019",
+            "message": ["Currently, if no PINGIDENTITY_DEVOPS_USER or PINGIDENTITY_DEVOPS_KEY",
+                        "are provided, a default evaluation user/key is used.",
+                        "",
+                        "After August 19th, 2019, the evaluation user/key will no longer be ",
+                        "available, and a personal DEVOPS_USER/DEVOPS_KEY will be required.",
+                        "",
+                        "Details on obtaining these can be found at:",
+                        "",
+                        "    https://pingidentity-devops.gitbook.io/devops/prod-license"]
+        },
+        {
+            "validFrom": 20191201,
+            "validTo": 20191231,
+            "subject": "EULA explicit acceptance is now required",
+            "message": [
+                "Continued use of the Ping Identity Docker container constitute acceptance of the Terms of Use of Ping Identity software.",
+                "For details, see:",
+                "",
+                "    https://www.pingidentity.com/en/legal/subscription-agreement.html"
+            ]
+        },
+        {
+            "validFrom": 20200101,
+            "validTo": 20200201,
+            "subject": "PING_CONTAINER_PRIVILEGED will default to false",
+            "message": [
+                "Set PING_CONTAINER_PRIVILEGED to false and verify that everything works in your environment, the Ping Identity Docker images will default to non-root run time PID starting 2020-Feb-01",
+                "",
+                "Continued use of the Ping Identity Docker container constitute acceptance of the Terms of Use of Ping Identity software.",
+                "For details, see:",
+                "",
+                "    https://www.pingidentity.com/en/legal/subscription-agreement.html"
+            ]
+        }
+    ],
+    "pingaccess" : [{
+        "validFrom": 20191026,
+        "validTo": 20191031,
+        "subject": "****pingaccess:edge Moving from 5.3.0 to 5.3.1*****",
+        "message": ["Currently, pingaccess:edge uses product version 5.3.0.",
+                    "Configurations (data.json, PingAccess.mv.db) are tightly linked to versions.",
+                    "This version change WILL BREAK your current deployments if you are using",
+                    "pingaccess:edge. ",
+                    "For PingAccess, it is recommended to always use pingaccess:<version>-edge instead.",
+                    "For all tagging best practices please visit: ",
+                    "https://pingidentity-devops.gitbook.io/devops/docker-images"]
+    }],
+    "pingdatagovernance" : [],
+    "pingdatasync" : [],
+    "pingdirectory" : [],
+    "pingdirectoryproxy" : [],
+    "pingfederate" : []
+}

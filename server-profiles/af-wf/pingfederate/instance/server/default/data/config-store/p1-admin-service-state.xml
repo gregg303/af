@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:config xmlns:con="http://www.sourceid.org/2004/05/config">
+    <con:item name="ApplicationDockEndpoint">https://desktop.pingone.com/af-workforce</con:item>
+    <con:item name="ProvisioningBaseUrl">https://scim.connect.pingidentity.com/prov-service</con:item>
+    <con:item name="KeyPairAlias">cccvl2hyegh1nk6mj87zw5js1</con:item>
+    <con:item name="ClientId">378fbaff-9eae-41f6-a7f6-ce9ad530dc08</con:item>
+    <con:item name="AccountId">8aac0b68-513a-4bb3-8e5c-61f084c4c3a4</con:item>
+    <con:item name="CompanyName">greggdiamant+afwf@pingidentity.com</con:item>
+    <con:item name="Associated">true</con:item>
+</con:config>
