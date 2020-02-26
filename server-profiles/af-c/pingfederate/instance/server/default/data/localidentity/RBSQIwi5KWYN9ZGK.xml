@@ -33,7 +33,7 @@
             <loc:parameter param-name="Unique ID Field" value="false"/>
             <loc:parameter param-name="Mask Log Values" value="false"/>
         </loc:field>
-        <loc:field type="TEXT" default-value="" id="serialNumber" label="Date Of Birth">
+        <loc:field type="TEXT" default-value="" id="dateOfBirth" label="Date Of Birth">
             <loc:appliesTo profile="true" registration="false"/>
             <loc:parameter param-name="Read-Only" value="false"/>
             <loc:parameter param-name="Required" value="true"/>
@@ -61,9 +61,9 @@
         <loc:Attribute fieldName="entryUUID" datastore-field="entryUUID"/>
         <loc:Attribute fieldName="uid" datastore-field="uid"/>
         <loc:Attribute fieldName="mail" datastore-field="mail"/>
-        <loc:Attribute fieldName="serialNumber" datastore-field="serialNumber"/>
+        <loc:Attribute fieldName="dateOfBirth" datastore-field="dateOfBirth"/>
         <loc:Attribute fieldName="cn" datastore-field="cn"/>
         <loc:Attribute fieldName="sn" datastore-field="sn"/>
-        <loc:Attribute fieldName="SSN" datastore-field="uidNumber"/>
+        <loc:Attribute fieldName="SSN" datastore-field="serialNumber"/>
     </loc:datastore-mapping>
 </loc:localIdentity>
