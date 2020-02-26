@@ -1,0 +1,374 @@
+{
+	"info": {
+		"_postman_id": "f581003b-1130-4947-8824-7e1f57bde58b",
+		"name": "PingDirectory REST Simple",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Schema",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://{{pingdirectory_host}}:{{pingdirectory_https_port}}/directory/v1/schemas/person"
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "cc4d0f7e-4c14-49f8-a6d4-a5b9f8f76e5e",
+						"exec": [
+							"pm.environment.set(\"userID\",Math.floor(Math.random()*1000000));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "f4ecff27-49d5-48fd-aa9e-12d2e0766660",
+						"exec": [
+							"pm.test(\"response is ok\", function(){",
+							"    pm.response.to.have.status(201);",
+							"    ",
+							"});",
+							"",
+							"pm.test(\"response is JSON\", function(){",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"userURL\", jsonData[\"_links\"].self.href);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"_dn\": \"uid=user.{{userID}},ou=people,dc=example,dc=com\",\n  \"objectClass\": [ \"inetOrgPerson\", \"pf-connected-identities\" ],\n  \"cn\": [\"{{firstName}} {{lastName}}\"],\n  \"givenName\": [\"{{firstName}}\"],\n  \"sn\": [\"{{lastName}}\"],\n  \"uid\": [\"user.{{userID}}\"],\n  \"mail\": [\"user.{{userID}}@example.com\"],\n  \"userPassword\": [\"2FederateM0re!\"],\n  \"pf-connected-identity\": [\"auth-source=pf-local-identity:user-id=user.{{userID}}\"]\n}"
+				},
+				"url": "https://{{pingdirectory_host}}:{{pingdirectory_https_port}}/directory/v1/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get User (by self URL)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b2ff802e-ff95-46e1-b770-dda971b3c8ea",
+						"exec": [
+							"pm.test(\"response is ok\", function(){",
+							"    pm.response.to.have.status(200);",
+							"    ",
+							"});",
+							"",
+							"pm.test(\"response is JSON\", function(){",
+							"    pm.response.to.be.json;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{userURL}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Search User by cn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9fdef161-2f45-4b6d-9477-d69ef2df1467",
+						"exec": [
+							"pm.test(\"response is ok\", function(){",
+							"    pm.response.to.have.status(200);",
+							"    ",
+							"});",
+							"",
+							"pm.test(\"response is JSON\", function(){",
+							"    pm.response.to.be.json;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{pingdirectory_host}}:{{pingdirectory_https_port}}/directory/v1/{{base_dn}}/subtree?searchScope=wholeSubtree&filter=cn eq \"user.{{userID}}\"",
+					"protocol": "https",
+					"host": [
+						"{{pingdirectory_host}}"
+					],
+					"port": "{{pingdirectory_https_port}}",
+					"path": [
+						"directory",
+						"v1",
+						"{{base_dn}}",
+						"subtree"
+					],
+					"query": [
+						{
+							"key": "searchScope",
+							"value": "wholeSubtree"
+						},
+						{
+							"key": "filter",
+							"value": "cn eq \"user.{{userID}}\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search all users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cd12833b-8aeb-4ae2-86af-ff8846371ab8",
+						"exec": [
+							"pm.test(\"response is ok\", function(){",
+							"    pm.response.to.have.status(200);",
+							"    ",
+							"});",
+							"",
+							"pm.test(\"response is JSON\", function(){",
+							"    pm.response.to.be.json;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{pingdirectory_host}}:{{pingdirectory_https_port}}/directory/v1/{{base_dn}}/subtree?searchScope=wholeSubtree&filter=sn eq \"pm-test-user\"",
+					"protocol": "https",
+					"host": [
+						"{{pingdirectory_host}}"
+					],
+					"port": "{{pingdirectory_https_port}}",
+					"path": [
+						"directory",
+						"v1",
+						"{{base_dn}}",
+						"subtree"
+					],
+					"query": [
+						{
+							"key": "searchScope",
+							"value": "wholeSubtree"
+						},
+						{
+							"key": "filter",
+							"value": "sn eq \"pm-test-user\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User (set description)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7fb307bf-907c-4ddd-8b35-bfabf3d7a5c3",
+						"exec": [
+							"pm.test(\"response is ok\", function(){",
+							"    pm.response.to.have.status(200);",
+							"    ",
+							"});",
+							"",
+							"pm.test(\"response is JSON\", function(){",
+							"    pm.response.to.be.json;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": [\"This user is created via the PingDirectory REST API\"]\n}"
+				},
+				"url": "{{userURL}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Update User (add description)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "05b59aab-a314-49e4-ba0e-8f1a6c1532a5",
+						"exec": [
+							"pm.test(\"response is ok\", function(){",
+							"    pm.response.to.have.status(200);",
+							"    ",
+							"});",
+							"",
+							"pm.test(\"response is JSON\", function(){",
+							"    pm.response.to.be.json;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"modifications\": \n\t\t[\n\t\t\t{\n\t\t\t\t\"attributeName\": \"description\",\n\t\t\t\t\"modificationType\": \"add\",\n\t\t\t\t\"values\": [\"furthermore, these are set via a Postman collection\"]\n\t\t\t}\n\t\t]\n}"
+				},
+				"url": "{{userURL}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2757d70b-5a27-44d0-abdd-dda0d9304eff",
+						"exec": [
+							"pm.test(\"response is ok\", function(){",
+							"    pm.response.to.have.status(204);",
+							"    ",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{userURL}}"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "{{pingdirectory_admin_pwd}}",
+			"username": "{{pingdirectory_admin_user}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "72bff18c-6efe-4e0a-b9ad-75b07bc82faf",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "0a0c40cb-6cc1-4647-a4b8-06b05b9461ad",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "1ad125b2-277a-4651-837a-1149a440e642",
+			"key": "pingdirectory_host",
+			"value": "localhost",
+			"type": "string"
+		},
+		{
+			"id": "11a89352-2041-4eaa-a8ca-0337221bb9f6",
+			"key": "pingdirectory_https_port",
+			"value": "1443",
+			"type": "string"
+		},
+		{
+			"id": "6491f3e0-9486-4179-a602-55460b6c45b9",
+			"key": "base_dn",
+			"value": "dc=example,dc=com",
+			"type": "string"
+		},
+		{
+			"id": "02f7d59d-d8cb-4bc7-979b-2c83cd8e9a97",
+			"key": "pingdirectory_admin_user",
+			"value": "cn=administrator",
+			"type": "string"
+		},
+		{
+			"id": "6079982f-ca48-453b-9b55-091f334b1d37",
+			"key": "pingdirectory_admin_pwd",
+			"value": "2FederateM0re",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
