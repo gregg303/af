@@ -61,7 +61,7 @@
         <loc:Attribute fieldName="entryUUID" datastore-field="entryUUID"/>
         <loc:Attribute fieldName="uid" datastore-field="uid"/>
         <loc:Attribute fieldName="mail" datastore-field="mail"/>
-        <loc:Attribute fieldName="dateOfBirth" datastore-field="dateOfBirth"/>
+        <loc:Attribute fieldName="dateOfBirth" datastore-field="description"/>
         <loc:Attribute fieldName="cn" datastore-field="cn"/>
         <loc:Attribute fieldName="sn" datastore-field="sn"/>
         <loc:Attribute fieldName="SSN" datastore-field="serialNumber"/>

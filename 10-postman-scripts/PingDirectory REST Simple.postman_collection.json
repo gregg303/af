@@ -236,7 +236,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"description\": [\"This user is created via the PingDirectory REST API\"]\n}"
+					"raw": "{\n  \"description\": [\"April 1, 2000\"],\n  \"serialNumber\": [\"0000001234\"]\n}"
 				},
 				"url": "{{userURL}}"
 			},
