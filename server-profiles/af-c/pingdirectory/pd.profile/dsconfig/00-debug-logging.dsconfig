@@ -4,10 +4,10 @@ dsconfig set-log-publisher-prop \
 
 dsconfig create-debug-target \
   --publisher-name "File-Based Debug Logger" \
-  --set debug-level:debug \
+  --set debug-level:verbose \
   --target-name com.unboundid.guitools.replicationcli
 
 dsconfig create-debug-target \
   --publisher-name "File-Based Debug Logger" \
-  --set debug-level:debug \
+  --set debug-level:verbose \
   --target-name foo.bar
